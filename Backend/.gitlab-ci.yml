@@ -1,0 +1,20 @@
+stages:
+  - deploy
+
+Deploy: 
+  stage: deploy
+  before_script:
+  - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )' 
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - ssh-keyscan $AWS_PUBLIC_IP >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+  script:
+    - mkdir .public
+    - cp -r * .public
+    - mv .public public
+    - zip -r public.zip public
+    - scp -o StrictHostKeyChecking=no public.zip ubuntu@$AWS_PUBLIC_IP:/var/www/html
+    - ssh -o StrictHostKeyChecking=no ubuntu@$AWS_PUBLIC_IP "cd /var/www/html; touch foo.txt; unzip public.zip"

@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* font-family: "Open Sans", sans-serif; */
+  font-family: "Poppins", sans-serif;
+  background-color: #f9fafb !important;
+}
+.yupError {
+  @apply ring-gray-600  text-red-700 text-[0.8rem] pl-2 tracking-[0.15rem] font-thin bg-slate-200 p-1 rounded-md;
+}
+
+.inputField {
+  @apply rounded-md bg-gray-100 border-gray-300  focus:ring-1 focus:ring-black focus:ring-opacity-50 w-full px-4 py-2 text-gray-700 leading-tight focus:outline-none;
+}
+
+.btnStyle {
+  @apply flex items-center px-4 py-2  text-white rounded-lg hover:bg-black transition-colors;
+}
+
+.shadow-2 {
+  box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.2); /* Bottom and right shadows */
+}
+
+/* shadow-3 in hover */
+/* hover shadow-3 and shadow-4 are same */
+.shadow-1 {
+  box-shadow: 0 8px 8px -4px lightblue;
+}
+/* Corrected .shadow-4 class */
+.shadow-4 {
+  box-shadow: 6px 6px 10px lightblue;
+}
+.shadow-4 {
+  box-shadow: 2px 2px 5px lightblue;
+}
+.shadow-5 {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow properties */
+}
+.transition-1 {
+  transition: 0.3s ease-in-out all;
+}
+
+/* Customize the scrollbar track */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Customize the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+}
+
+/* Customize the scrollbar track when hovering over it */
+::-webkit-scrollbar-track:hover {
+  background: transparent;
+}
+
+/* loading css */
+.loader {
+  width: 100px;
+  height: 100px;
+  border: 3px solid #94a3b8;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  box-sizing: border-box;
+  position: relative;
+  animation: pulse 1s linear infinite;
+}
+.loader:after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 3px solid #e2e8f0;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: scaleUp 1s linear infinite;
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  60%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+@keyframes pulse {
+  0%,
+  60%,
+  100% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(1.2);
+  }
+}
+/* above card loader */
+.spinner {
+  border-radius: 100%;
+  border: 2px dashed #dc2626;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* //..................... */
+/* loaders........... */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes dotAnimation {
+  0%,
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  75%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loaders {
+  font-family: "Helvetica", sans-serif;
+  font-size: 48px; /* Adjust the font size as needed */
+  font-weight: bold;
+  color: #d1d5db; /* Opacity gray color */
+}
+
+.dot {
+  font-family: "Helvetica", sans-serif;
+  font-size: 48px; /* Adjust the font size as needed */
+  font-weight: bold;
+  color: #d1d5db; /* Opacity gray color */
+  animation: fadeIn 0.5s ease-in-out, dotAnimation 2s infinite;
+}
